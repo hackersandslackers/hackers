@@ -17,6 +17,7 @@
 	{{! Scripts }}
 	<script type="text/javascript" src="https://hackersandslackers.com/public/ghost-sdk.min.js"></script>
 	<script src="{{asset "/js/includes/jquery.min.js"}}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
 	<script src="{{asset "/js/includes/secret.js"}}"></script>
 	{{#is "post"}}
 		<meta property="og:image" content="{{img_url feature_image}}">
@@ -33,7 +34,7 @@
 <body class="{{body_class}}">
 	{{! insert header partial}}
 	{{> header}}
-
+	{{> loginmodal }}
 	{{{body}}}
 </body>
 	{{! insert footer partial}}

@@ -1,0 +1,43 @@
+{{!< transactional}}
+<!DOCTYPE html>
+<html lang="{{lang}}" class="transactional">
+
+<head>
+	{{! Document Settings }}
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	{{! Page Meta }}
+	<title>{{meta_title}}</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+	{{! Styles }}
+	<script src="{{asset "/js/includes/secret.js"}}"></script>
+	<script src="{{asset "/js/includes/jquery.min.js"}}"></script>
+	<link rel="stylesheet" type="text/css" href="{{asset "/css/MyFontsWebfontsKit.css"}}">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-9ralMzdK1QYsk4yBY680hmsb4/hJ98xK3w0TIaJ3ll4POWpWUYaA2bRjGGujGT8w" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{{asset "css/main.min.css"}}">
+
+{{ghost_head}}
+</head>
+
+<body class="transactional signup-template">
+<script src="{{asset "/js/includes/jquery.min.js"}}"></script>
+
+<script>
+$challengeId = isset($_REQUEST['challengeId']) ? $_REQUEST['challengeId'] : false;
+$oth = isset($_REQUEST['oth']) ? $_REQUEST['oth'] : false;
+$identifier = isset($_REQUEST['identifier']) ? $_REQUEST['identifier'] : false;
+
+if ($identifier and $challengeId and $oth) {
+
+$source = file_get_contents("https://byepass.co/api/verify/?challengeId=$challengeId&oth=$oth&identifier=$identifier&key=7Bzm4kJOpVKMewZ32WYGW12xvboXEgqj&secret=f8raDc4JiwHFM85D33bzJos6mhxpa52p");
+$json = json_decode($source);
+
+if ($json->success and (time() - strtotime($json->challenge_ts) < 300)) {
+//authenticateed - to something
+}
+
+</script>
+
+</body>
+</html>
